@@ -1,14 +1,22 @@
 Treebook::Application.routes.draw do
-  resources :statuses
-
-
+ 
   devise_for :views
 
   devise_for :installs
 
   devise_for :users
 
+  devise_scope :user do
+    get 'register', to: 'devise/registrations#new', as: :register
+    get 'login', to: 'devise/sessions#new', as: :login
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+    get 'edit', to: 'devise/registrations#edit', as: :edit
+  end
+
+
+
   resources :statuses
+  get 'pheed', to: 'statuses#index', as: :pheed
 root to: 'statuses#index'
 
   # The priority is based upon order of creation:
