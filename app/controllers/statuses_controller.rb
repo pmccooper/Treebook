@@ -4,7 +4,7 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all
+    @statuses = Status.order.reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +43,7 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   # POST /statuses.json
   def create
     @status = Status.new(params[:status])
+    @status.user = current_user
 
     respond_to do |format|
       if @status.save
@@ -59,6 +60,7 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   # PUT /statuses/1.json
   def update
     @status = Status.find(params[:id])
+    @status.user = current_user
 
     respond_to do |format|
       if @status.update_attributes(params[:status])
@@ -75,6 +77,7 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   # DELETE /statuses/1.json
   def destroy
     @status = Status.find(params[:id])
+    @status.user = current_user
     @status.destroy
 
     respond_to do |format|

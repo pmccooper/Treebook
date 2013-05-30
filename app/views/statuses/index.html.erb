@@ -2,11 +2,11 @@
 <h1>Global News Pheed</h1>
 </div>
 
-<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %>
+<%= link_to "Post a New Status", new_status_path, class: "btn btn-success" %><br/>
 
 <% @statuses.each do |status| %>
 <div class="status">
-  <div class="row">
+  <div class="row-fluid">
 	 <div class="span1">
 	 	<%= image_tag status.user.gravatar_url %>
 	 </div>

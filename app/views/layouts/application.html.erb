@@ -10,10 +10,7 @@
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a href="#" class="brand">PhilledIn</a>
-				<ul class="nav">
-					<li><%=link_to "All Statuses", pheed_path%>
-				</ul>
+				<a href="/pheed" class="brand">PhilledIn</a>
 				<% if current_user %>
 					<ul class="nav pull-right">
 					<li><%=link_to "Sign Out", logout_path %>
@@ -36,7 +33,7 @@
 			</div>
 		</div>
 	</div>
-<div class="container">
+<div class="container-fluid">
 	<% flash.each do |type, message| %>
 	<% if flash[:notice] %>
 		<div class="alert <%= flash_class type %>">
@@ -45,9 +42,27 @@
 			<% end %>
 		</div>
 	<% end %>
-
+<div class="row-fluid">
+	<div class="span2"></div>
+	<div class="span10">
 <%= yield %>
-
+	</div>
+</div>
+<footer class="common">
+	<ul class="copy">
+        <li class="noimg"><a title="About Wolfram|Alpha" href="/about.html">About</a> | 
+        	<a title="Wolfram|Alpha Terms of Use" href="/termsofuse.html">Terms</a> | 
+        	<a title="Wolfram|Alpha Privacy Policy" href="/privacypolicy.html">Privacy</a></li>
+    </ul>
+    <ul class="copy">
+		<li class="noimg">
+		© 2013 PhilledIn
+		<a href="http://localhost:3000/pheed">PMC inCOOPERated</a>
+		Company
+		</li>
+	</ul>	
+</footer>
+</div>
 </div>
 </body>
 </html>
